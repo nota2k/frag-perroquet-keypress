@@ -1,0 +1,459 @@
+html,body{
+	margin: 0;
+}
+
+body{
+	width: 100%;
+	height: 100vh;
+	margin: 0 auto;
+}
+
+.wrapper{
+	position: relative;
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.container{
+	  width: max-content;
+	  display: grid;
+	  grid-template-columns: repeat(25,21px);
+	  grid-template-rows: repeat(35,21px);
+	  margin: 0 auto;
+	  background-image: url(img/frag-perroquet-base.png);
+	  background-size: 629px;
+	  background-repeat: no-repeat;
+	  background-position: center 1px;
+	}
+
+.container-line{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 1000;
+	margin: 0 auto;
+	pointer-events:none;
+	overflow: hidden;
+}
+
+.grid {
+    border-width: 1px 0 0 1px;
+}
+
+.grid div {
+    border: 1px dotted #7b7b7b54;
+    border-width: 0 1px 1px 0;
+    float: left;
+}
+
+.cut{
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: relative;
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	box-shadow: 1px 1px 4px #0d0d0d, inset 0px 0px 4px #ffffff36;
+}
+
+.cut::before{
+	content: '';
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	z-index: 100;
+	transition: 0.2s ease-in-out all;
+}
+
+.cut:hover::before{
+	box-shadow: inset 0px 0px 10px #ea463edb;
+}
+
+.hori{
+	overflow: hidden;
+}
+
+.verti{
+	animation-name: slideDown;
+	animation-play-state: paused;
+	display: flex;
+	flex-direction: column-reverse;
+	background-size: 100% 101%;
+}
+
+.up{
+	animation-name: slideUp;
+	animation-play-state: paused;
+}
+
+.right{
+	animation-name: slideRight;
+	animation-play-state: paused;
+}
+
+.right-long{
+	animation-name: slideRightLong;
+	animation-play-state: paused;
+}
+
+.left{
+	animation-name: slideLeft;
+	animation-play-state: paused;
+	transform: translateX(0px);
+}
+
+.left-long{
+	animation-name: slideLeftLong;
+	animation-play-state: paused;
+}
+
+.select{
+	filter: brightness(2.0) saturate(0.6);
+	box-shadow: 2px 2px 10px black;
+	z-index: 50;
+}
+
+.select::before{
+	content: '';
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: relative;
+	z-index: 100;
+	transition: 0.2s ease-in-out all;
+}
+
+.select:hover::before{
+	box-shadow: inset 0px 0px 10px #0e3aead6;
+}
+
+.animate{
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+	animation-play-state: running!important;
+}
+
+.reverse{
+	animation-play-state: running!important;
+}
+
+/*.hori.is-inactive{
+	animation-name: slideLeftReverse;
+}*/
+
+.verti.reverse{
+	animation-name: slideDownReverse;
+}
+
+.up.reverse{
+	animation-name: slideUpReverse;
+	animation-play-state: paused;
+}
+
+.right.reverse{
+	animation-name: slideRightReverse;
+	animation-play-state: paused;
+}
+
+.right.long.is-inactive{
+	animation-name: slideRightLongReverse;
+	animation-play-state: paused;
+}
+
+.left.reverse{
+	animation-name: slideLeftReverse;
+	animation-play-state: running!important;
+}
+
+.left-long.is-inactive{
+	animation-name: slideLeftLongReverse;
+	animation-play-state: paused;
+}
+
+@keyframes slideLeft{
+	from{
+		transform: translateX(0);
+	}
+	to{
+		transform: translateX(-42px);
+	}
+}
+
+@keyframes slideLeftReverse{
+	from{
+		transform: translateX(-42px);
+	}
+	to{
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideLeftLong{
+	from{
+		transform: translateX(0);
+	}
+	to{
+		transform: translateX(-84px);
+	}
+}
+
+@keyframes slideLeftLongReverse{
+	from{
+		transform: translateX(-84px);
+	}
+	to{
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideRight{
+	from{
+		transform: translateX(0);
+	}
+	to{
+		transform: translateX(42px);
+	}
+}
+
+@keyframes slideRightReverse{
+	from{
+		transform: translateX(42px);
+	}
+	to{
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideRightLong{
+	from{
+		transform: translateX(0);
+	}
+	to{
+		transform: translateX(84px);
+	}
+}
+
+@keyframes slideRightLongReverse{
+	from{
+		transform: translateX(84px);
+	}
+	to{
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideDown{
+	from{
+		transform: translateY(0);
+	}
+	to{
+		transform: translateY(56px);
+	}
+}
+
+@keyframes slideDownReverse{
+	from{
+		transform: translateY(56px);
+	}
+	to{
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideUp{
+	from{
+		transform: translateY(0);
+	}
+	to{
+		transform: translateY(-39px);
+	}
+}
+
+@keyframes slideUpReverse{
+	from{
+		transform: translateY(-39px);
+	}
+	to{
+		transform: translateY(0);
+	}
+}
+
+.animated{
+	cursor: pointer;
+}
+
+#cut01{
+	background-image: url(img/cuts2/frag-parrot-cut-1.png);
+	grid-column: 13 / span 1;
+	grid-row: 26 / span 12;
+}
+
+#cut02{
+	background-image: url(img/cuts2/frag-parrot-cut-2.png);
+	grid-row-start: 4;
+	grid-column-start: 12;
+	grid-column: 14 / span 1;
+	grid-row: 15 / span 9;
+}
+
+#cut03{
+	background-image: url(img/cuts2/frag-parrot-cut-3.png);
+	grid-column: 15 / span 1;
+	grid-row: 12 / span 20;
+}
+
+#cut04{
+	background-image: url(img/cuts2/frag-parrot-cut-4.png);
+	grid-column: 11 / span 1;
+	grid-row: 15 / span 9;
+}
+
+#cut05{
+	background-image: url(img/cuts2/frag-parrot-cut-5.png);
+	grid-column: 11 / span 7;
+	grid-row: 11 / span 1;
+	background-position: 10%;
+}
+
+#cut06{
+	background-image: url(img/cuts2/frag-parrot-cut-6.png);
+	grid-column: 11 / span 4;
+	grid-row: 4 / span 1;
+}
+
+#cut07{
+	background-image: url(img/cuts2/frag-parrot-cut-7.png);
+	grid-column: 12 / span 1;
+	grid-row: 5 / span 5;
+	background-position: bottom;
+}
+
+#cut08{
+	background-image: url(img/cuts2/frag-parrot-cut-8.png);
+	grid-column: 9 / span 3;
+	grid-row: 6 / span 2;
+	max-height: 21px;
+	background-position: center;
+}
+
+#cut09{
+	background-image: url(img/cuts2/frag-parrot-cut-9.png);
+	grid-column: 8 / span 4;
+	grid-row: 7 / span 2;
+	max-height: 21px;
+	background-position: right;
+}
+
+#cut10{
+	background-image: url(img/cuts2/frag-parrot-cut-10.png);
+	grid-column: 11 / span 4;
+	grid-row: 12 / span 1;
+}
+
+#cut11{
+	background-image: url(img/cuts2/frag-parrot-cut-11.png);
+	grid-column: 12 / span 2;
+	grid-row: 15 / span 1;
+}
+
+#cut12{
+	background-image: url(img/cuts2/frag-parrot-cut-12.png);
+	grid-column: 9 / span 1;
+	grid-row: 9 / span 1;
+}
+
+#cut13{
+	background-image: url(img/cuts2/frag-parrot-cut-13.png);
+	grid-column: 8 / span 1;
+	grid-row: 9 / span 7;
+}
+
+#cut14{
+	background-image: url(img/cuts2/frag-parrot-cut-14.png);
+	grid-column: 10 / span 1;
+	grid-row: 9 / span 14;
+}
+
+.reset-wrapper{
+	width: 100px;
+	text-align: center;
+	position: fixed;
+	bottom: 10%;
+	right: 10%;
+	background-color: #0ed983;
+	padding: 0.6em;
+	line-height: 0em;
+	border-radius: 4px;
+	transition: 0.2s ease-in-out all;
+	cursor: pointer;
+}
+
+.reset-wrapper:hover {
+	filter: brightness(0.7);
+}
+
+@font-face{
+	font-family: 'Seymour';
+	src: url("fonts/SeymourOne-Regular.ttf") format("truetype");
+}
+
+@font-face{
+	font-family: 'DM Sans';
+	src: url("fonts/DMSans-Regular.ttf") format("truetype");
+}
+
+h1{
+	font-family: "DM Sans";
+	font-size: 1.6em;
+	text-transform: uppercase;
+	font-weight: normal;
+	color:  #11261d;
+}
+
+.gridbox{
+	display: flex;
+	justify-content:center;
+	gap: 10px;
+}
+
+p{
+	font-size: 0.8em;
+	color: #11261d;
+	margin:0;
+	line-height: 1em;
+	font-family: "DM Sans";
+}
+
+input[type="checkbox"] {
+	appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1em;
+  height: 1em;
+  border: 0.1em solid #168053;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+	display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+	background-color: #11261d;
+	transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
